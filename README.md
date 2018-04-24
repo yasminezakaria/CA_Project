@@ -1,4 +1,4 @@
-<h1>Instruction  Fetch</h1>
+**Instruction  Fetch**
 **DONE**
 - Instruction Memory Module
 **TOBE Edited**
