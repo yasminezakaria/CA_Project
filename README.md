@@ -1,7 +1,7 @@
-**Instruction  Fetch**
-**DONE**
+# Instruction  Fetch
+DONE:
 - Instruction Memory Module
-**TOBE Edited**
+TOBE Edited:
 - PC
 
 
