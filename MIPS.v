@@ -1,4 +1,4 @@
-module MIPS(PC,clk);
+module MIPS(clk);
 
 input clk;
 
@@ -6,7 +6,7 @@ input clk;
 reg [63:0] IFID; 
 reg [58:0] IDEX; 
 reg [31:0] EXMEM; //size not right
-reg [31:0] MEMWB; //size not right
+reg [70:0] MEMWB;
 
 //Instruction Wire
 wire[31:0] instruction;
@@ -33,8 +33,17 @@ wire[4:0] ReadData2;
 
 
 //Control Signals
-wire WB,M;
+wire controloutput;
+wire[1:0] WB;
+wire[2:0] M;
+wire RegDst,Branch,MemRead,MemtoReg,ALUOp,memWrite,AluSrc,RegWrite;
 wire[2:0] EX;
+
+//ALU
+wire aluresult;
+
+//Data Memory
+wire readDataM;
 
 
 
@@ -59,8 +68,20 @@ assign inst = IFID[15:0];
 
 
 //Control Call
-//
-//
+controller c(clk,controlinput,controloutput);
+
+//assign Control Signals
+assign RegDst = controloutput[0];
+assign Branch = controloutput[1];
+assign MemRead = controloutput[2];
+assign MemtoReg = controloutput[3];
+assign ALUOp = controloutput[4];
+assign memWrite = controloutput[5];
+assign AluSrc = controloutput[6];
+assign RegWrite = controloutput[7];
+assign WB = {controloutput[7],controloutput[3]};
+assign Ex = {controloutput[0],controloutput[4],controloutput[6]};
+assign M = {controloutput[1],controloutput[2],controloutput[5]};
 
 
 //TODO: Register File Call (4th and 5th port are static for now until we get them from write back)
@@ -74,5 +95,10 @@ always@(posedge clk) begin
 IDEX = {WB,M,EX,IFID[35:31],ReadData1,ReadData2,signextend,instruction[20:16], instruction[15:11]};
 end
 
+//passing everything to MEM/WB
+always@(posedge clk) begin
+//last take it from EX/MEM
+MEMWB = {RegWrite,MemtoReg,aluresult,readDataM,last};
+end
 
 endmodule
