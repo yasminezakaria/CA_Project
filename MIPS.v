@@ -1,4 +1,4 @@
-module MIPS(clk);
+module MIPS(clk, ReadData1, ReadData2, memReadData);
 
 input clk;
 
@@ -28,8 +28,8 @@ wire [31:0] signextend;
 
 
 //Register File Outputs
-wire[31:0] ReadData1;
-wire[31:0] ReadData2;
+output wire[31:0] ReadData1;
+output wire[31:0] ReadData2;
 
 
 //Control Signals
@@ -48,7 +48,7 @@ wire[31:0] ALU_Out;
 wire[31:0] addResult;
 
 //Memory Wires
-wire[31:0] memReadData;
+output wire[31:0] memReadData;
 wire[31:0] addResultAddress;
 
 //Write Back wires
@@ -135,4 +135,3 @@ assign WriteRegister = MEMWB[4:0];
 assign WiteData = (MemToReg==0)?MEMWB[68:37]:MEMWB[36:5];
 
 endmodule
-
