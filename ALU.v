@@ -10,15 +10,14 @@ always @(*)
 begin
 addResult = (addressSignExtend << 2) + pc;
 case(Sel)
- 6'b000000: begin Res = A + B; zeroFlag = (A==B)?1'b1:1'b0; end // Add
- 6'b000001: begin Res = A - B; zeroFlag = (A==B)?1'b1:1'b0; end// subtract
- 6'b000010: begin Res = A & B; zeroFlag = (A==B)?1'b1:1'b0; end// And
- 6'b000011: begin Res = A | B; zeroFlag = (A==B)?1'b1:1'b0; end// Or
- 6'b000100: begin Res = A << B; zeroFlag = (A==B)?1'b1:1'b0; end// shift left
- 6'b000101:  begin Res = A >> B; zeroFlag = (A==B)? 1'b1:1'b0; end // shift right
- 6'b000110:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //slt
- 6'b000111:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //sltu
- 6'b111111: begin Res = 0; end //case where ALUOp = 0
+ 6'b100000: begin Res = A + B; zeroFlag = (A==B)?1'b1:1'b0; end // Add
+ 6'b100010: begin Res = A - B; zeroFlag = (A==B)?1'b1:1'b0; end// subtract
+ 6'b100100: begin Res = A & B; zeroFlag = (A==B)?1'b1:1'b0; end// And
+ 6'b100101: begin Res = A | B; zeroFlag = (A==B)?1'b1:1'b0; end// Or
+ 6'b000000: begin Res = A << B; zeroFlag = (A==B)?1'b1:1'b0; end// shift left
+ 6'b000010:  begin Res = A >> B; zeroFlag = (A==B)? 1'b1:1'b0; end // shift right
+ 6'b101010:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //slt
+ 6'b101011:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //sltu
  endcase
  end
 endmodule
