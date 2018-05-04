@@ -6,8 +6,8 @@
       reg clk;  
       reg reset;  
       // Outputs  
-      wire [15:0] pc_out;  
-      wire [15:0] alu_result;//,reg3,reg4;  
+      wire [31:0] pc_out;  
+      wire [31:0] alu_result;//,reg3,reg4;  
    
       PC procount=  PC(clk,reset,pcsrc,result,prc_out);
       //PC pc(clk,rst,PCSrc,addResultAddress,pc);
