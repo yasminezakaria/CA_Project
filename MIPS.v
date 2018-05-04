@@ -5,7 +5,7 @@ input [31:0] PC;
 
 //Pipeline Registers
 wire reg [35:0] IFID; 
-wire reg [56:0] IDEX; 
+wire reg [58:0] IDEX; 
 wire reg [31:0] EXMEM; //size not right
 wire reg [31:0] MEMWB; //size not right
 
@@ -34,7 +34,8 @@ wire[4:0] ReadData2;
 
 
 //Control Signals
-wire WB,M,EX;
+wire WB,M;
+wire[2:0] EX;
 
 
 
