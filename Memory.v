@@ -4,8 +4,8 @@
         input clk;
         input [15:0] addres;
         input [31:0] memWdata;
-        input [31:0] memR;
-        input [31:0] memW;
+        input  memR;
+        input  memW;
         
       integer i;  
       reg [15:0] ram [255:0];  
