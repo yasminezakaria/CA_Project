@@ -4,10 +4,10 @@ input clk;
 input [31:0] PC;
 
 //Pipeline Registers
-wire reg [35:0] IFID; 
-wire reg [58:0] IDEX; 
-wire reg [31:0] EXMEM; //size not right
-wire reg [31:0] MEMWB; //size not right
+reg [35:0] IFID; 
+reg [58:0] IDEX; 
+reg [31:0] EXMEM; //size not right
+reg [31:0] MEMWB; //size not right
 
 //Instruction Wire
 wire[31:0] instruction;
@@ -48,8 +48,10 @@ instruction_memory instmem(PC,instruction);
 
 //storing instruction in IFID
 assign PC = PC+4;
-assign IFID = {PC,instruction};
 
+always@(posedge clk) begin
+IFID = {PC,instruction};
+end
 
 //Decoding
 assign controlinput  = IFID[31:26];
@@ -71,8 +73,9 @@ Register_File regfile(rs, rt, rd, 0, 1'b0, clk, ReadData1, ReadData2);
 assign signextend = {inst,16'b0};
 
 //passing everything to ID/EX
-assign IDEX = {WB,M,EX,IFID[35:31],ReadData1,ReadData2,signextend,instruction[20:16], instruction[15:11]};
-
+always@(posedge clk) begin
+IDEX = {WB,M,EX,IFID[35:31],ReadData1,ReadData2,signextend,instruction[20:16], instruction[15:11]};
+end
 
 
 endmodule

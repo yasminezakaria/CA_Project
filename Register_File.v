@@ -1,6 +1,6 @@
-module jdoodle(ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, Clk, ReadData1, ReadData2);
+module Register_File(ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, Clk, ReadData1, ReadData2);
 
-input [5:0] ReadRegister1,ReadRegister2,WriteRegister;
+input [4:0] ReadRegister1,ReadRegister2,WriteRegister;
 input [31:0] WriteData;
 input RegWrite,Clk;
 
