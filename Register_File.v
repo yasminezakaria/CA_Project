@@ -1,4 +1,4 @@
-module Register_File(ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, Clk, ReadData1, ReadData2);
+module jdoodle(ReadRegister1, ReadRegister2, WriteRegister, WriteData, RegWrite, Clk, ReadData1, ReadData2);
 
 input [1:0] ReadRegister1,ReadRegister2,WriteRegister;
 input [31:0] WriteData;
@@ -18,14 +18,14 @@ end
 always@(negedge Clk)
 begin
 
-    if(ReadRegister1 == 0)
-            ReadData1 <= 0;
-    else 
-            ReadData1 <= Registers[ReadRegister1];
-    if(ReadRegister2 == 0)
-            ReadData2 <= 0;
-    else 
-            ReadData2 <= Registers[ReadRegister2];
+if(ReadRegister1 == 0)
+ReadData1 <= 0;
+else
+ReadData1 <= Registers[ReadRegister1];
+if(ReadRegister2 == 0)
+ReadData2 <= 0;
+else
+ReadData2 <= Registers[ReadRegister2];
 end
 
 
