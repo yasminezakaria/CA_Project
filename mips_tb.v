@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module	mips_tb;
 reg clk;
 wire [31:0] ReadData1, ReadData2, memRead;
