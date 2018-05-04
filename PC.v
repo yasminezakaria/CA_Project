@@ -1,4 +1,4 @@
-module PC (clk,rst,pc,PCSrc,addResultAddress);
+module PC (clk,rst,PCSrc,addResultAddress,pc);
 	input clk,rst,PCSrc,addResultAddress;
     output 	reg	[31:0] 	pc;
 	wire	[31:0]	pc_plus_4;

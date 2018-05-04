@@ -1,10 +1,9 @@
 module MIPS(PC,clk);
 
 input clk;
-input [31:0] PC;
 
 //Pipeline Registers
-reg [35:0] IFID; 
+reg [63:0] IFID; 
 reg [58:0] IDEX; 
 reg [31:0] EXMEM; //size not right
 reg [31:0] MEMWB; //size not right
@@ -40,14 +39,12 @@ wire[2:0] EX;
 
 
 //PC call
-//
+//TODO: PCSrc & addResultAddress should be gotten from EXMEM register
+PC pc(clk,rst,PCSrc,addResultAddress,pc);
 //
 
 //instruction Memory Call
 instruction_memory instmem(PC,instruction);
-
-//storing instruction in IFID
-assign PC = PC+4;
 
 always@(posedge clk) begin
 IFID = {PC,instruction};
@@ -66,7 +63,7 @@ assign inst = IFID[15:0];
 //
 
 
-//Register File Call (4th and 5th port are static for now until we get them from write back)
+//TODO: Register File Call (4th and 5th port are static for now until we get them from write back)
 Register_File regfile(rs, rt, rd, 0, 1'b0, clk, ReadData1, ReadData2);
 
 //Sign Extend
