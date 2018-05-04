@@ -18,7 +18,7 @@
       end  
       initial begin  
            // next line is for tracing 
-           //$monitor ("register 3=%d, register 4=%d", reg3,reg4);  
+           //$monitor (pc);  
            reset = 1;  
            // Wait 100 ns for the reset to finish  
            #100;  
