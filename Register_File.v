@@ -4,7 +4,7 @@ input [4:0] ReadRegister1,ReadRegister2,WriteRegister;
 input [31:0] WriteData;
 input RegWrite,Clk;
 
-output reg [4:0] ReadData1,ReadData2;
+output reg [31:0] ReadData1,ReadData2;
 
 reg [31:0] Registers [31:0];
 

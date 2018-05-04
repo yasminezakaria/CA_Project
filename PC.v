@@ -1,5 +1,6 @@
 module PC (clk,rst,PCSrc,addResultAddress,pc);
-	input clk,rst,PCSrc,addResultAddress;
+	input clk,rst,PCSrc;
+	input[31:0]addResultAddress;
     output 	reg	[31:0] 	pc;
 	wire	[31:0]	pc_plus_4;
 	assign pc_plus_4 = pc + 4;

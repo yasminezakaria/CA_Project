@@ -18,6 +18,7 @@ case(Sel)
  6'b000101:  begin Res = A >> B; zeroFlag = (A==B)? 1'b1:1'b0; end // shift right
  6'b000110:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //slt
  6'b000111:	begin Res = (A < B) ? 1 : 0; zeroFlag = (A==B)?1'b1:1'b0; end //sltu
+ 6'b111111: begin Res = 0; end //case where ALUOp = 0
  endcase
  end
 endmodule
